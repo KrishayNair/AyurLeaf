@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+from pathlib import Path
 from streamlit_option_menu import option_menu
 import numpy as np
 import tensorflow as tf
@@ -12,16 +13,11 @@ import matplotlib.image as mpimg
 
 warnings.filterwarnings("ignore")
 st.set_page_config(page_title="AyurLeafAI",page_icon=":herb:",layout="wide")
+current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
+css_file = current_dir / "styles" / "main.css"
 
-hide_streamlit_style = """
-	<style>
-    #MainMenu {visibility: hidden;}
-	footer {visibility: hidden;}
-    body{background-color:#016A70;
-     color:#FFFFDD}
-  </style>
-"""
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+with open(css_file) as f:
+    st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
 
 # Load the trained model
 model = tf.keras.models.load_model('plant_model_final.h5')
