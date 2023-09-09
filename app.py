@@ -11,8 +11,10 @@ import matplotlib.image as mpimg
 
 hide_streamlit_style = """
 	<style>
-  #MainMenu {visibility: hidden;}
+    #MainMenu {visibility: hidden;}
 	footer {visibility: hidden;}
+    *{background-color:#016A70;
+     color:#FFFFDD}
   </style>
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
@@ -244,6 +246,9 @@ if selected == "About":
     st.header("Ayurvedic plant leaf recognition")
     st.write("Ayurvedic Plant Species Identification involves the meticulous recognition of various plants used in Ayurvedic medicine based on their unique botanical characteristics. This knowledge is essential for ensuring the safety and effectiveness of herbal remedies. Once a plant is accurately identified, its leaves, among other parts, are often utilized for their medicinal properties.")
     st.write("For instance, in Ayurveda, the identification of Neem leaves (Azadirachta indica) is crucial. Neem leaves are recognized by their pinnate structure with small, serrated leaflets. These leaves are renowned for their powerful antimicrobial and anti-inflammatory properties. They are commonly used in Ayurvedic remedies to treat skin conditions like acne and eczema, as well as to promote overall detoxification and immune system support. Additionally, Neem leaves are used in oral hygiene practices for their antibacterial effects, making them a versatile and highly valued herb in Ayurvedic medicine.")
+    st.subheader("How it works")
+    image = Image.open('architecture.png')
+    st.image(image, caption='System architecture of our system')
     st.subheader("Sample plant images")
     class_folders = os.listdir(main_data_dir)
     num_samples = min(len(class_folders), 5)  # Show up to 5 samples
