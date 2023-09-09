@@ -3,17 +3,21 @@ import os
 from streamlit_option_menu import option_menu
 import numpy as np
 import tensorflow as tf
+import warnings
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from PIL import Image
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
+warnings.filterwarnings("ignore")
+st.set_page_config(page_title="AyurLeafAI",page_icon=":herb:",layout="wide")
+
 hide_streamlit_style = """
 	<style>
     #MainMenu {visibility: hidden;}
 	footer {visibility: hidden;}
-    *{background-color:#016A70;
+    body{background-color:#016A70;
      color:#FFFFDD}
   </style>
 """
@@ -36,7 +40,7 @@ selected = option_menu(
 )
 if selected == "Predict":
 # Streamlit UI
-    st.title("Ayurvedic plant leaf recognition")
+    st.title("AyurLeafAI")
 
     # Upload an image for prediction
     st.set_option('deprecation.showfileUploaderEncoding', False)
@@ -243,12 +247,13 @@ if selected == "Predict":
 
 if selected == "About":            
 # Display some sample images from your dataset
-    st.header("Ayurvedic plant leaf recognition")
+    st.header("What is AyurLeafAI ?")
     st.write("Ayurvedic Plant Species Identification involves the meticulous recognition of various plants used in Ayurvedic medicine based on their unique botanical characteristics. This knowledge is essential for ensuring the safety and effectiveness of herbal remedies. Once a plant is accurately identified, its leaves, among other parts, are often utilized for their medicinal properties.")
     st.write("For instance, in Ayurveda, the identification of Neem leaves (Azadirachta indica) is crucial. Neem leaves are recognized by their pinnate structure with small, serrated leaflets. These leaves are renowned for their powerful antimicrobial and anti-inflammatory properties. They are commonly used in Ayurvedic remedies to treat skin conditions like acne and eczema, as well as to promote overall detoxification and immune system support. Additionally, Neem leaves are used in oral hygiene practices for their antibacterial effects, making them a versatile and highly valued herb in Ayurvedic medicine.")
-    st.subheader("How it works")
+    st.header("How it works ?")
+    st.write("AyurLeafAI, using machine learning, employs a data-driven approach to identify and analyze the unique characteristics of Ayurvedic leaves. It begins by collecting a dataset of leaf images and their corresponding Ayurvedic properties. Machine learning algorithms are then trained on this data to recognize patterns, such as color, shape, and texture, which are indicative of medicinal qualities. When a user submits a leaf image, the system processes it through these algorithms, comparing it to the learned patterns. It then predicts the potential medicinal properties, helping users identify the therapeutic benefits of the leaf based on Ayurvedic principles, promoting natural and holistic healthcare choices.")
     image = Image.open('architecture.png')
-    st.image(image, caption='System architecture of our system')
+    st.image(image, caption='Fig : System Architecture of AyurLeafAI')
     st.subheader("Sample plant images")
     class_folders = os.listdir(main_data_dir)
     num_samples = min(len(class_folders), 5)  # Show up to 5 samples
