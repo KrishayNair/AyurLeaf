@@ -28,13 +28,13 @@ label_mapping = {i: label for i, label in enumerate(sorted(os.listdir(main_data_
 
 selected = option_menu(
     menu_title=None,
-    options=["Predict","About"],
+    options=["Detection","About"],
     icons=["search","book"],
     menu_icon="cast",
     default_index=0,
     orientation="horizontal",
 )
-if selected == "Predict":
+if selected == "Detection":
 # Streamlit UI
     st.title("AyurLeafAI")
 
@@ -75,7 +75,7 @@ if selected == "Predict":
                     # st.write(f"Predicted Label: {predicted_label}")
                     # st.write(f"Accuracy: {confidence * 100:.2f}%")
                     accuracy= f"{confidence * 100:.2f}"
-                string = "Predicted Ayurvedic Leaf  :-" + " " + predicted_label 
+                string = "Detected Ayurvedic Leaf  :-" + " " + predicted_label 
                 percentage = "Accuracy =" + " " + accuracy + " %"
                 if uploaded_image is None:
                     st.text("please upload an image")
