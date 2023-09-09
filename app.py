@@ -18,10 +18,10 @@ hide_streamlit_style = """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Load the trained model
-model = tf.keras.models.load_model('plant_identification_model2.h5')
+model = tf.keras.models.load_model('plant_model_final.h5')
 
 # Create label mapping based on subdirectory names
-main_data_dir = 'Segmented Medicinal Leaf Images'
+main_data_dir = 'Segmented Medicinal Leaf Images\Segmented Medicinal Leaf Images'
 label_mapping = {i: label for i, label in enumerate(sorted(os.listdir(main_data_dir)))}
 
 selected = option_menu(
